@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
  */
 public final class JedisUtils {
     private JedisUtils(){}
-    private static JedisPool jedilPool;
+    private static JedisPool jedisPool;
     private static int maxtotal;
     private static int maxwaitmillis;
     private static String host;
@@ -34,13 +34,13 @@ public final class JedisUtils {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxTotal(maxtotal);
         jedisPoolConfig.setMaxWaitMillis(maxwaitmillis);
-        jedilPool = new JedisPool(jedisPoolConfig,host,port);
+        jedisPool = new JedisPool(jedisPoolConfig,host,port);
     }
     /**
      * 获取Jedis
      */
     public static Jedis getJedis(){
-        return jedilPool.getResource();
+        return jedisPool.getResource();
     }
     /**
      * 关闭Jedis
